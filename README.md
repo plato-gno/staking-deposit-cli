@@ -16,7 +16,7 @@
         - [`new-mnemonic` Arguments](#new-mnemonic-arguments)
         - [`existing-mnemonic` Arguments](#existing-mnemonic-arguments)
         - [Successful message](#successful-message)
-    - [Option 2. Build `deposit-cli` with native Python](#option-2-build-deposit-cli-with-native-python)
+    - [Option 2. Build `validator-data-generator` with native Python](#option-2-build-validator-data-generator-with-native-python)
       - [Step 0. Python version checking](#step-0-python-version-checking)
       - [Step 1. Installation](#step-1-installation-1)
       - [Step 2. Create keys and `deposit_data-*.json`](#step-2-create-keys-and-deposit_data-json-1)
@@ -24,7 +24,7 @@
         - [Commands](#commands-1)
         - [Arguments](#arguments)
         - [Successful message](#successful-message-1)
-    - [Option 3. Build `deposit-cli` with `virtualenv`](#option-3-build-deposit-cli-with-virtualenv)
+    - [Option 3. Build `validator-data-generator` with `virtualenv`](#option-3-build-validator-data-generator-with-virtualenv)
       - [Step 0. Python version checking](#step-0-python-version-checking-1)
       - [Step 1. Installation](#step-1-installation-2)
       - [Step 2. Create keys and `deposit_data-*.json`](#step-2-create-keys-and-deposit_data-json-2)
@@ -43,14 +43,14 @@
         - [Language Argument](#language-argument-2)
         - [Commands](#commands-3)
         - [Arguments](#arguments-3)
-    - [Option 2. Build `deposit-cli` with native Python](#option-2-build-deposit-cli-with-native-python-1)
+    - [Option 2. Build `validator-data-generator` with native Python](#option-2-build-validator-data-generator-with-native-python-1)
       - [Step 0. Python version checking](#step-0-python-version-checking-2)
       - [Step 1. Installation](#step-1-installation-4)
       - [Step 2. Create keys and `deposit_data-*.json`](#step-2-create-keys-and-deposit_data-json-5)
         - [Language Argument](#language-argument-3)
         - [Commands](#commands-4)
         - [Arguments](#arguments-4)
-    - [Option 3. Build `deposit-cli` with `virtualenv`](#option-3-build-deposit-cli-with-virtualenv-1)
+    - [Option 3. Build `validator-data-generator` with `virtualenv`](#option-3-build-validator-data-generator-with-virtualenv-1)
       - [Step 0. Python version checking](#step-0-python-version-checking-3)
       - [Step 1. Installation](#step-1-installation-5)
       - [Step 2. Create keys and `deposit_data-*.json`](#step-2-create-keys-and-deposit_data-json-6)
@@ -74,10 +74,6 @@ It is based on the [Ethereum `deposit-cli` tool](https://github.com/ethereum/sta
 
 - **Warning: Please generate your keystores on your own safe, completely offline device.**
 - **Warning: Please backup your mnemonic, keystores, and password securely.**
-
-Please read [Launchpad Validator FAQs](https://launchpad.ethereum.org/faq#keys) before generating the keys.
-
-You can find the audit report by Trail of Bits [here](https://github.com/trailofbits/publications/blob/master/reviews/ETH2DepositCLI.pdf).
 
 ## Tutorial for users
 
@@ -114,7 +110,7 @@ or run the following command to enter the interactive CLI and generate keys from
 
 ###### language Argument
 
-The Launchpad offers many language/internationalization options. If you wish to select one as a CLI argument, it must be passed in before one of the commands is chosen.
+The tool offers many language/internationalization options. If you wish to select one as a CLI argument, it must be passed in before one of the commands is chosen.
 
 | Argument | Type | Description |
 | -------- | -------- | -------- |
@@ -150,8 +146,8 @@ You can use `existing-mnemonic --help` to see all arguments. Note that if there 
 | `--validator_start_index` | Non-negative integer | The index of the first validator's keys you wish to generate. If this is your first time generating keys with this mnemonic, use 0. If you have generated keys using this mnemonic before, use the next index from which you want to start generating keys from (eg, if you've generated 4 keys before (keys #0, #1, #2, #3), then enter 4 here.|
 | `--num_validators`  | Non-negative integer | The number of new signing keys you want to generate. Note that the child key(s) are generated via the same master key. |
 | `--folder` | String. Pointing to `./validator_keys` by default | The folder path for the keystore(s) and deposit(s) |
-| `--chain` | String. `mainnet` by default | The chain setting for the signing domain. |
-| `--eth1_withdrawal_address` | String. Gnosis address in hexadecimal encoded form | If this field is set and valid, the given Gnosis address will be used to create the withdrawal credentials. Otherwise, it will generate withdrawal credentials with the mnemonic-derived withdrawal public key in [EIP-2334 format](https://eips.ethereum.org/EIPS/eip-2334#eth2-specific-parameters). |
+| `--chain` | String. `gnosis` by default | The chain setting for the signing domain. |
+| `--eth1_withdrawal_address` | String. Gnosis Chain address in hexadecimal encoded form | If this field is set and valid, the given Gnosis Chain address will be used to create the withdrawal credentials. Otherwise, it will generate withdrawal credentials with the mnemonic-derived withdrawal public key in [EIP-2334 format](https://eips.ethereum.org/EIPS/eip-2334#eth2-specific-parameters). |
 
 ###### Successful message
 
@@ -168,7 +164,7 @@ Success!
 Your keys can be found at: <YOUR_FOLDER_PATH>
 ```
 
-#### Option 2. Build `deposit-cli` with native Python
+#### Option 2. Build `validator-data-generator` with native Python
 
 ##### Step 0. Python version checking
 
@@ -232,7 +228,7 @@ See [here](#existing-mnemonic-arguments) for `existing-mnemonic` arguments
 ###### Successful message
 See [here](#successful-message)
 
-#### Option 3. Build `deposit-cli` with `virtualenv`
+#### Option 3. Build `validator-data-generator` with `virtualenv`
 
 ##### Step 0. Python version checking
 
@@ -298,12 +294,13 @@ See [here](#existing-mnemonic-arguments) for `existing-mnemonic` arguments
 
 #### Option 4. Use Docker image
 
-##### Step 1. Build the docker image
+
+##### Step 1. Pull the docker image
 
 Run the following command to locally build the docker image:
 
 ```sh
-make build_docker
+docker pull ghcr.io/gnosischain/validator-data-generator:latest
 ```
 
 ##### Step 2. Create keys and `deposit_data-*.json`
@@ -334,7 +331,7 @@ See [here](#successful-message)
 
 ----
 
-### For Windows users
+## For Windows users
 
 #### Option 1. Download binary executable file
 
@@ -379,7 +376,7 @@ See [here](#commands)
 See [here](#new-mnemonic-arguments) for `new-mnemonic` arguments
 See [here](#existing-mnemonic-arguments) for `existing-mnemonic` arguments
 
-#### Option 2. Build `deposit-cli` with native Python
+#### Option 2. Build `validator-data-generator` with native Python
 
 ##### Step 0. Python version checking
 
@@ -441,7 +438,7 @@ See [here](#commands)
 See [here](#new-mnemonic-arguments) for `new-mnemonic` arguments
 See [here](#existing-mnemonic-arguments) for `existing-mnemonic` arguments
 
-#### Option 3. Build `deposit-cli` with `virtualenv`
+#### Option 3. Build `validator-data-generator` with `virtualenv`
 
 ##### Step 0. Python version checking
 
@@ -489,7 +486,7 @@ python .\staking_deposit\deposit.py new-mnemonic --num_validators=<NUM_VALIDATOR
 ```
 
 ```cmd
-python .\staking_deposit\deposit.pyexisting-mnemonic --num_validators=<NUM_VALIDATORS> --validator_start_index=<START_INDEX> --chain=<CHAIN_NAME> --folder=<YOUR_FOLDER_PATH>
+python .\staking_deposit\deposit.py existing-mnemonic --num_validators=<NUM_VALIDATORS> --validator_start_index=<START_INDEX> --chain=<CHAIN_NAME> --folder=<YOUR_FOLDER_PATH>
 ```
 
 ###### Language Argument
@@ -532,6 +529,7 @@ python3 -m pytest .
 
 👋This is not the section you are looking for.👋
 If you are trying to **build the binary** on macos with an M1 Mac and you are using pyenv to manage your python version. You'll probably need to reinstall a given python version using:
+
 ```
 env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.10.3
 ```

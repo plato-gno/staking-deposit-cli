@@ -33,10 +33,9 @@ from staking_deposit.utils.intl import (
 )
 from staking_deposit.settings import (
     ALL_CHAINS,
-    MAINNET,
-    PRATER,
     GNOSIS,
-    get_chain_setting,
+    GNOSIS,
+    CHIADO,
 )
 
 
