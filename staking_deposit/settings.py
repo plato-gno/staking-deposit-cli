@@ -19,7 +19,6 @@ SEPOLIA = 'sepolia'
 GNOSIS_TESTNET = 'gnosis-testnet'
 GNOSIS = 'gnosis'
 CHIADO = 'chiado'
-TEST = 'test'
 
 
 # Mainnet setting
@@ -33,14 +32,10 @@ KilnSetting = BaseChainSetting(NETWORK_NAME=KILN, GENESIS_FORK_VERSION=bytes.fro
 # Sepolia setting
 SepoliaSetting = BaseChainSetting(NETWORK_NAME=SEPOLIA, GENESIS_FORK_VERSION=bytes.fromhex('90000069'))
 
-# Gnosis Beacon Chain testnet setting
-GnosisTestnetSetting = BaseChainSetting(NETWORK_NAME=GNOSIS_TESTNET, GENESIS_FORK_VERSION=bytes.fromhex('00006464'))
 # Gnosis Chiado testnet setting (10200)
 GnosisChiadoTestnetSetting = BaseChainSetting(NETWORK_NAME=CHIADO, GENESIS_FORK_VERSION=bytes.fromhex('000027D8')) 
 # Gnosis Beacon Chain setting (100)
 GnosisSetting = BaseChainSetting(NETWORK_NAME=GNOSIS, GENESIS_FORK_VERSION=bytes.fromhex('00000064'))
-
-TestSetting = BaseChainSetting(NETWORK_NAME=TEST, GENESIS_FORK_VERSION=bytes.fromhex(environ.get('GENESIS_FORK_VERSION', '12345678')))
 
 
 ALL_CHAINS: Dict[str, BaseChainSetting] = {
@@ -53,7 +48,6 @@ ALL_CHAINS: Dict[str, BaseChainSetting] = {
     GNOSIS_TESTNET: GnosisTestnetSetting,
     GNOSIS: GnosisSetting,
     CHIADO: GnosisChiadoTestnetSetting,
-    TEST: TestSetting,
 }
 
 
