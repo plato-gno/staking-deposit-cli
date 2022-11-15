@@ -34,8 +34,8 @@ from staking_deposit.utils.intl import (
 from staking_deposit.settings import (
     ALL_CHAINS,
     GNOSIS,
-    GNOSIS,
     CHIADO,
+    get_chain_setting,
 )
 
 
