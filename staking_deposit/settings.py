@@ -16,7 +16,6 @@ GOERLI = 'goerli'
 PRATER = 'prater'
 KILN = 'kiln'
 SEPOLIA = 'sepolia'
-GNOSIS_TESTNET = 'gnosis-testnet'
 GNOSIS = 'gnosis'
 CHIADO = 'chiado'
 
@@ -45,7 +44,6 @@ ALL_CHAINS: Dict[str, BaseChainSetting] = {
     PRATER: GoerliSetting,  # Prater is the old name of the Prater/Goerli testnet
     KILN: KilnSetting,
     SEPOLIA: SepoliaSetting,
-    GNOSIS_TESTNET: GnosisTestnetSetting,
     GNOSIS: GnosisSetting,
     CHIADO: GnosisChiadoTestnetSetting,
 }
