@@ -78,7 +78,6 @@ It is based on the [Ethereum `deposit-cli` tool](https://github.com/ethereum/sta
 ## Tutorial for users
 
 ### Build requirements
-
 - [Python **3.8+**](https://www.python.org/about/gettingstarted/)
 - [pip3](https://pip.pypa.io/en/stable/installing/)
 
