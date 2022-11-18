@@ -70,7 +70,7 @@
 
 `validator-data-generator` is a tool for creating [EIP-2335 format](https://eips.ethereum.org/EIPS/eip-2335) BLS12-381 keystores and a corresponding `deposit_data*.json` file for the Gnosis Chain.
 
-It is based on the [Eth2.0 `deposit-cli` tool](https://github.com/ethereum/eth2.0-deposit-cli) with minor adoptation for the Gnosis Chain specific.
+It is based on the [Ethereum `deposit-cli` tool](https://github.com/ethereum/staking-deposit-cli) with minor adoptation for the Gnosis Chain specific.
 
 - **Warning: Please generate your keystores on your own safe, completely offline device.**
 - **Warning: Please backup your mnemonic, keystores, and password securely.**
@@ -79,7 +79,7 @@ It is based on the [Eth2.0 `deposit-cli` tool](https://github.com/ethereum/eth2.
 
 ### Build requirements
 
-- [Python **3.7+**](https://www.python.org/about/gettingstarted/)
+- [Python **3.8+**](https://www.python.org/about/gettingstarted/)
 - [pip3](https://pip.pypa.io/en/stable/installing/)
 
 ### For Linux or MacOS users
@@ -123,7 +123,7 @@ The CLI offers different commands depending on what you want to do with the tool
 | Command | Description |
 | ------- | ----------- |
 | `new-mnemonic` | (Recommended) This command is used to generate keystores with a new mnemonic. |
-| `existing-mnemonic` | This command is used to re-generate or derive new keys from your existing mnemonic. Use this command, if (i) you have already generated keys with this CLI before, (ii) you want to reuse your mnemonic that you know is secure that you generated elsewhere (reusing your eth1 mnemonic .etc), or (iii) you lost your keystores and need to recover your keys. |
+| `existing-mnemonic` | This command is used to re-generate or derive new keys from your existing mnemonic. Use this command, if (i) you have already generated keys with this CLI before, (ii) you want to reuse your mnemonic that you know is secure that you generated elsewhere (reusing your gnosis mnemonic .etc), or (iii) you lost your keystores and need to recover your keys. |
 
 ###### `new-mnemonic` Arguments
 
@@ -135,7 +135,7 @@ You can use `new-mnemonic --help` to see all arguments. Note that if there are m
 | `--mnemonic_language` | String. Options: `简体中文`, `繁體中文`, `český jazyk`, `English`, `Italiano`, `한국어`, `Português`, `Español`. Default to `English` | The mnemonic language |
 | `--folder` | String. Pointing to `./validator_keys` by default | The folder path for the keystore(s) and deposit(s) |
 | `--chain` | String. `gnosis` by default | The chain setting for the signing domain. |
-| `--eth1_withdrawal_address` | String. Gnosis Chain address in hexadecimal encoded form | If this field is set and valid, the given Gnosis Chain address will be used to create the withdrawal credentials. Otherwise, it will generate withdrawal credentials with the mnemonic-derived withdrawal public key in [EIP-2334 format](https://eips.ethereum.org/EIPS/eip-2334#eth2-specific-parameters). |
+| `--eth1_withdrawal_address` | String. Gnosis address in hexadecimal encoded form | If this field is set and valid, the given Gnosis address will be used to create the withdrawal credentials. Otherwise, it will generate withdrawal credentials with the mnemonic-derived withdrawal public key in [EIP-2334 format](https://eips.ethereum.org/EIPS/eip-2334#eth2-specific-parameters). |
 
 ###### `existing-mnemonic` Arguments
 
@@ -168,7 +168,7 @@ Your keys can be found at: <YOUR_FOLDER_PATH>
 
 ##### Step 0. Python version checking
 
-Ensure you are using Python version >= Python3.7:
+Ensure you are using Python version >= Python3.8:
 
 ```sh
 python3 -V
@@ -232,7 +232,7 @@ See [here](#successful-message)
 
 ##### Step 0. Python version checking
 
-Ensure you are using Python version >= Python3.7:
+Ensure you are using Python version >= Python3.8:
 
 ```sh
 python3 -V
@@ -317,7 +317,7 @@ You can also run the tool with optional arguments:
 docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ghcr.io/gnosischain/validator-data-generator:latest new-mnemonic --num_validators=<NUM_VALIDATORS> --mnemonic_language=english --folder=<YOUR_FOLDER_PATH>
 ```
 
-Example for 1 validator on the Gnosis Beacon Chain using english:
+Example for 1 validator on the [Gnosis](https://docs.gnosischain.com/) using english:
 
 ```sh
 docker run -it --rm -v $(pwd)/validator_keys:/app/validator_keys ghcr.io/gnosischain/validator-data-generator:latest new-mnemonic --num_validators=1 --mnemonic_language=english
@@ -380,7 +380,7 @@ See [here](#existing-mnemonic-arguments) for `existing-mnemonic` arguments
 
 ##### Step 0. Python version checking
 
-Ensure you are using Python version >= Python3.7 (Assume that you've installed Python 3 as the main Python):
+Ensure you are using Python version >= Python3.8 (Assume that you've installed Python 3 as the main Python):
 
 ```sh
 python -V
@@ -442,7 +442,7 @@ See [here](#existing-mnemonic-arguments) for `existing-mnemonic` arguments
 
 ##### Step 0. Python version checking
 
-Ensure you are using Python version >= Python3.7 (Assume that you've installed Python 3 as the main Python):
+Ensure you are using Python version >= Python3.8 (Assume that you've installed Python 3 as the main Python):
 
 ```cmd
 python -V
@@ -529,6 +529,7 @@ python3 -m pytest .
 
 👋This is not the section you are looking for.👋
 If you are trying to **build the binary** on macos with an M1 Mac and you are using pyenv to manage your python version. You'll probably need to reinstall a given python version using:
+
 ```
-env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.10.2
+env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.10.3
 ```
