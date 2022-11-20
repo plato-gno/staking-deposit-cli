@@ -1,4 +1,5 @@
 from typing import Dict, NamedTuple
+from os import environ
 
 
 DEPOSIT_CLI_VERSION = '2.3.0'
@@ -15,6 +16,8 @@ GOERLI = 'goerli'
 PRATER = 'prater'
 KILN = 'kiln'
 SEPOLIA = 'sepolia'
+GNOSIS = 'gnosis'
+CHIADO = 'chiado'
 
 
 # Mainnet setting
@@ -27,7 +30,10 @@ GoerliSetting = BaseChainSetting(NETWORK_NAME=GOERLI, GENESIS_FORK_VERSION=bytes
 KilnSetting = BaseChainSetting(NETWORK_NAME=KILN, GENESIS_FORK_VERSION=bytes.fromhex('70000069'))
 # Sepolia setting
 SepoliaSetting = BaseChainSetting(NETWORK_NAME=SEPOLIA, GENESIS_FORK_VERSION=bytes.fromhex('90000069'))
-
+# Gnosis Chiado testnet setting (10200)
+GnosisChiadoTestnetSetting = BaseChainSetting(NETWORK_NAME=CHIADO, GENESIS_FORK_VERSION=bytes.fromhex('0000006F')) 
+# Gnosis Beacon Chain setting (100)
+GnosisSetting = BaseChainSetting(NETWORK_NAME=GNOSIS, GENESIS_FORK_VERSION=bytes.fromhex('00000064'))
 
 ALL_CHAINS: Dict[str, BaseChainSetting] = {
     MAINNET: MainnetSetting,
@@ -36,6 +42,8 @@ ALL_CHAINS: Dict[str, BaseChainSetting] = {
     PRATER: GoerliSetting,  # Prater is the old name of the Prater/Goerli testnet
     KILN: KilnSetting,
     SEPOLIA: SepoliaSetting,
+    GNOSIS: GnosisSetting,
+    CHIADO: GnosisChiadoTestnetSetting,
 }
 
 
